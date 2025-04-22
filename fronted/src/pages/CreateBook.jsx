@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { PORT } from '../../../backend/config';
 import { BackButton } from '../components/BackButton';
 
 export const CreateBook = () => {
@@ -25,7 +24,7 @@ export const CreateBook = () => {
     try {
       const token = localStorage.getItem("token"); // Get stored token
 
-      await axios.post(`http://localhost:${PORT}/books`, data, {
+      await axios.post(`http://localhost:3001/books`, data, {
         headers: { Authorization: `Bearer ${token}` }, // Send token
       });
 

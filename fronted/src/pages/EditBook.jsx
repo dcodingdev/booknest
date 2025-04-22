@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { PORT } from '../../../backend/config';
 import { BackButton } from '../components/BackButton';
 import { Spinner } from '../components/Spinner';
 import { toast, ToastContainer } from 'react-toastify';
@@ -30,7 +29,7 @@ export const EditBook = () => {
           return;
         }
 
-        const res = await axios.get(`http://localhost:${PORT}/books/${id}`, {
+        const res = await axios.get(`http://localhost:3001/books/${id}`, {
           headers: { Authorization: `Bearer ${token}` }, // Send token
         });
         setTitle(res.data.title);

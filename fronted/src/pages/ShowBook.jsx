@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { PORT } from '../../../backend/config';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { BackButton } from '../components/BackButton';
@@ -14,7 +13,9 @@ export const ShowBook = () => {
     const fetchBook = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`http://localhost:${PORT}/books/${id}`);
+        const token = localStorage.getItem("token"); // Get stored token
+        const res = await axios.get(`http://localhost:3001/books/${id}`, { headers: { Authorization: `Bearer ${token}` }});
+        console.log(res.data)
         setBook(res.data);
       } catch (err) {
         console.error("Error fetching book:", err);
@@ -34,10 +35,10 @@ export const ShowBook = () => {
         <Spinner />
       ) : (
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-          <div className='my-4'>
+          {/* <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Id</span>
             <span>{book._id}</span>
-          </div>
+          </div> */}
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Title</span>
             <span>{book.title}</span>
@@ -51,12 +52,12 @@ export const ShowBook = () => {
             <span>{book.publishYear}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Create Time</span>
-            <span>{new Date(book.createdAt).toString()}</span>
+            <span className='text-xl mr-4 text-gray-500'>Create At</span>
+            <span>{new Date(book.createdAt).toLocaleDateString().toString()}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Last Update Time</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+            <span className='text-xl mr-4 text-gray-500'>Last At</span>
+            <span>{new Date(book.updatedAt).toLocaleDateString().toString()}</span>
           </div>
         </div>
       )}

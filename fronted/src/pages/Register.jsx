@@ -26,7 +26,7 @@ export default function Register() {
 
     try {
       console.log("Submitting form data:", formData); // Log form data for debugging
-      const res = await axios.post("http://localhost:5001/user/register", formData);
+      const res = await axios.post("http://localhost:3001/user/register", formData);
       alert("Registration successful! Please login.");
       navigate("/user/login");
     } catch (err) {

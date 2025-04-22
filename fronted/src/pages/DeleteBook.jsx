@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { PORT } from "../../../backend/config";
+
 import { BackButton } from "../components/BackButton";
 import { Spinner } from "../components/Spinner";
 
@@ -17,7 +17,7 @@ export const DeleteBook = () => {
         try {
             const token = localStorage.getItem("token"); // Get stored token
 
-            await axios.delete(`http://localhost:${PORT}/books/${id}`, {
+            await axios.delete(`http://localhost:3001/books/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }, // Send token
             });
 

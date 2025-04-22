@@ -66,7 +66,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "../components/Spinner";
-import { PORT } from "../../../backend/config";
+
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -83,7 +83,7 @@ export default function Profile() {
       }
 
       try {
-        const response = await axios.get(`http://localhost:${PORT}/user/profile`, {
+        const response = await axios.get(`http://localhost:3001/user/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
