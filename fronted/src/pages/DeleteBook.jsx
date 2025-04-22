@@ -17,7 +17,7 @@ export const DeleteBook = () => {
         try {
             const token = localStorage.getItem("token"); // Get stored token
 
-            await axios.delete(`http://localhost:3001/books/${id}`, {
+            await axios.delete(`https://booknest-backend-44av.onrender.com/books/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }, // Send token
             });
 
