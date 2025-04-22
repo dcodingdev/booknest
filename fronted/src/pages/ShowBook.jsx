@@ -14,7 +14,7 @@ export const ShowBook = () => {
       setLoading(true);
       try {
         const token = localStorage.getItem("token"); // Get stored token
-        const res = await axios.get(`http://localhost:3001/books/${id}`, { headers: { Authorization: `Bearer ${token}` }});
+        const res = await axios.get(`https://booknest-backend-44av.onrender.com/books/${id}`, { headers: { Authorization: `Bearer ${token}` }});
         console.log(res.data)
         setBook(res.data);
       } catch (err) {
