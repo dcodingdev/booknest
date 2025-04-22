@@ -133,7 +133,7 @@ export const generateToken = (user) => {
     const options = { expiresIn: "7d" };
 
     // Generate and return the JWT
-    return jwt.sign(payload, ACCESS_TOKEN_SECRET, options);
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, options);
 };
 
 // ✅ Register User & Return JWT

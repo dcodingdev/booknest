@@ -1,10 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import { PORT, MONGO_URI } from "./config.js";
+
 import bookRoute from "./routes/booksRoute.js";
 import userRoutes from "./routes/userRoutes.js";
 import dotenv from 'dotenv'
+import { prototype } from "../../keeper/backend/utils/ApiError.js";
 
 dotenv.config({
     path:'./.env'
@@ -34,11 +35,11 @@ app.use("/user", userRoutes); // Make sure userRoutes is correctly imported
 const port = process.env.PORT || 5001
 
 mongoose
-  .connect(MONGO_URI,)
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB Connected Successfully!");
     app.listen(port, () => {
-      console.log(`🚀 Server is running on http://localhost:${PORT}`);
+      console.log(`🚀 Server is running on http://localhost:${port}`);
     });
   })
   .catch((err) => {
