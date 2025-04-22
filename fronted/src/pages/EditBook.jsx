@@ -29,7 +29,7 @@ export const EditBook = () => {
           return;
         }
 
-        const res = await axios.get(`http://localhost:3001/books/${id}`, {
+        const res = await axios.get(`https://booknest-backend-44av.onrender.com/books/${id}`, {
           headers: { Authorization: `Bearer ${token}` }, // Send token
         });
         setTitle(res.data.title);
