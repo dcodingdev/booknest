@@ -24,7 +24,7 @@ export const CreateBook = () => {
     try {
       const token = localStorage.getItem("token"); // Get stored token
 
-      await axios.post(`https://booknest-backend-44av.onrender.com`, data, {
+      await axios.post(`https://booknest-backend-44av.onrender.com/`, data, {
         headers: { Authorization: `Bearer ${token}` }, // Send token
       });
 
