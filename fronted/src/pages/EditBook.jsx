@@ -58,7 +58,7 @@ export const EditBook = () => {
         return;
       }
 
-      await axios.put(`http://localhost:${PORT}/books/${id}`, {
+      await axios.put(`https://booknest-backend-44av.onrender.com/books/${id}`, {
         title,
         author,
         publishYear,
